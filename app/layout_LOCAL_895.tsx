@@ -5,10 +5,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import { ThemeProvider } from "@/context/ThemeProvider";
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -43,7 +40,6 @@ export default function RootLayout({
   return (
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <ClerkProvider
@@ -59,8 +55,6 @@ export default function RootLayout({
       </body>
     </html>
 =======
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <ClerkProvider
