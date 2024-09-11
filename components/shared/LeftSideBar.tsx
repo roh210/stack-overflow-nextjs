@@ -12,8 +12,8 @@ const LeftSideBar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="custom-scrollbar background-light900_dark200 light-border m:no-scrollbar sticky left-0 top-0 flex h-screen w-fit flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
-      <div className="flex flex-1 flex-col gap-6">
+    <section className="background-light900_dark200 light-border custom-scrollbar sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
+      <div className="flex flex-1 flex-col gap-6 max-md:gap-3">
         {sidebarLinks.map((item) => {
           const isActive =
             (pathname.includes(item.route) && item.route.length > 1) ||
@@ -29,10 +29,10 @@ const LeftSideBar = () => {
                 alt={item.label}
                 width={24}
                 height={24}
-                className={`${!isActive && "invert-colors"} `}
+                className={`${!isActive && "invert-colors"} max-md:size-[22px]`}
               />
               <p
-                className={`${isActive ? "base-bold" : "base-medium"} text-xl max-lg:hidden`}
+                className={`${isActive ? "base-bold" : "base-medium"} max-lg:hidden`}
               >
                 {item.label}
               </p>

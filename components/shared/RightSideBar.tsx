@@ -5,22 +5,22 @@ import RenderTag from "./RenderTag";
 
 const hotQuestions = [
   {
-    _id: 1,
+    _id: "1",
     title:
       "Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?",
   },
-  { _id: 2, title: "How to create a custom hook in React?" },
-  { _id: 3, title: "How to use React Context API?" },
-  { _id: 4, title: "How to use React Router?" },
-  { _id: 5, title: "How to use React Hooks?" },
+  { _id: "2", title: "How to create a custom hook in React?" },
+  { _id: "3", title: "How to use React Context API?" },
+  { _id: "4", title: "How to use React Router?" },
+  { _id: "5", title: "How to use React Hooks?" },
 ];
 
 const popularTags = [
-  { _id: 1, name: "Next JS", totalQuestions: 32 },
-  { _id: 2, name: "React", totalQuestions: 10 },
-  { _id: 3, name: "React Native", totalQuestions: 34 },
-  { _id: 4, name: "React Hooks", totalQuestions: 60 },
-  { _id: 5, name: "React Context API", totalQuestions: 2 },
+  { _id: "1", name: "Next JS", totalQuestions: 32 },
+  { _id: "2", name: "React", totalQuestions: 10 },
+  { _id: "3", name: "React Native", totalQuestions: 34 },
+  { _id: "4", name: "React Hooks", totalQuestions: 60 },
+  { _id: "5", name: "React Context API", totalQuestions: 2 },
 ];
 
 const RightSideBar = () => {
