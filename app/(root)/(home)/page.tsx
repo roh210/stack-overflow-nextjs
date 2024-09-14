@@ -22,7 +22,7 @@ const questions = [
   {
     _id: 2,
     title:
-      "Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?",
+      "est practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?",
     tags: [{ _id: "1", name: "next.js" }],
     author: { _id: "1", name: "Sujata | JS Mastery", picture: "" },
     upvotes: 100200020,
