@@ -17,11 +17,13 @@ const isIgnoredRoute = createRouteMatcher(["/api/webhook", "/api/chatgpt"]);
 export default clerkMiddleware((auth, req) => {
   // If the route is ignored, skip the auth check
   if (isIgnoredRoute(req)) {
+    console.log("Ignoring route", req.url);
     return;
   }
 
   // If the route is public, allow access without authentication
   if (isPublicRoute(req)) {
+    console.log("Allowing public route", req.url);
     return;
   }
 
