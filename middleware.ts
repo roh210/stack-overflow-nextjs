@@ -6,8 +6,8 @@ const isPublicRoute = createRouteMatcher([
   "/api/webhook",
   "/question/:id",
   "/tags",
-  "/tags:id",
-  "/profile:id",
+  "/tags/:id", // Fixed typo
+  "/profile/:id", // Fixed typo
   "/community",
   "/jobs",
 ]);
