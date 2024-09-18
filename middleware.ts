@@ -3,7 +3,7 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 // Define matchers for public and ignored routes
 const isPublicRoute = createRouteMatcher([
   "/",
-  "/api/webhook",
+  "/api/webhooks",
   "/question/:id",
   "/tags",
   "/tags/:id", // Fixed typo
@@ -12,7 +12,7 @@ const isPublicRoute = createRouteMatcher([
   "/jobs",
 ]);
 
-const isIgnoredRoute = createRouteMatcher(["/api/webhook", "/api/chatgpt"]);
+const isIgnoredRoute = createRouteMatcher(["/api/webhooks", "/api/chatgpt"]);
 
 export default clerkMiddleware((auth, req) => {
   // If the route is ignored, skip the auth check
@@ -28,7 +28,7 @@ export default clerkMiddleware((auth, req) => {
   }
 
   // For any other route, require authentication
-  auth();
+  auth().protect();
 });
 
 // Configure the matcher for which routes to apply the middleware
