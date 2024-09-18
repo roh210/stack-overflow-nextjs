@@ -1,8 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
 
-// Define matchers for public, ignored, and protected routes
-const isPublicRoute = createRouteMatcher([
+const publicRoutes = createRouteMatcher([
   "/",
   "/api/webhooks",
   "/question/:id",
@@ -13,36 +11,31 @@ const isPublicRoute = createRouteMatcher([
   "/jobs",
 ]);
 
-const isIgnoredRoute = createRouteMatcher(["/api/webhooks", "/api/chatgpt"]);
+const ignoredRoutes = createRouteMatcher(["/api/webhooks", "/api/chatgpt"]);
 
 const isProtectedRoute = createRouteMatcher(["/ask-question(.*)"]);
 
 export default clerkMiddleware((auth, req) => {
-  // If the route is ignored, skip the middleware entirely
-  if (isIgnoredRoute(req)) {
-    console.log("Ignoring route:", req.url);
-    return NextResponse.next(); // Continue without auth
+  if (publicRoutes(req)) {
+    // Allow access to public routes without authentication
+    return;
   }
 
-  // If the route is public, no authentication is required
-  if (isPublicRoute(req)) {
-    console.log("Allowing public route:", req.url);
-    return NextResponse.next(); // Continue without auth
+  if (ignoredRoutes(req)) {
+    // Skip Clerk middleware for ignored routes
+    return;
   }
 
-  // If the route is protected, enforce authentication
   if (isProtectedRoute(req)) {
-    console.log("Protecting route:", req.url);
-    auth().protect(); // Enforce authentication and return a valid response
-    return NextResponse.next();
+    // Explicitly protect the /ask-question route
+    auth().protect();
   }
 
-  // Default case: apply authentication for all other routes
-  auth(); // Enforce authentication by default
-  return NextResponse.next();
+  // For all other routes, you can decide whether to protect them or not
+  // Uncomment the next line if you want to protect all other routes by default
+  auth().protect();
 });
 
-// Configure the matcher for which routes to apply the middleware
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
