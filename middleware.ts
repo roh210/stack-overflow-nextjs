@@ -9,8 +9,6 @@ const publicRoutes = createRouteMatcher([
   "/profile/:id",
   "/community",
   "/jobs",
-  "/sign-in(.*)", // Make sign-in route catch-all
-  "/sign-up(.*)", // Make sign-up route catch-all
 ]);
 
 const ignoredRoutes = createRouteMatcher(["/api/webhooks", "/api/chatgpt"]);
