@@ -10,6 +10,8 @@ const publicRoutes = createRouteMatcher([
   "/profile/:id",
   "/community",
   "/jobs",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
 ]);
 
 // "/sign-in(.*)",
