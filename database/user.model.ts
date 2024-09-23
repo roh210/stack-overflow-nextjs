@@ -26,6 +26,7 @@ const UserSchema = new Schema({
   profilePic: {
     type: String,
     required: true,
+    default: "default-profile-pic-url",
   },
   location: { type: String },
   portfolioLink: { type: String },
