@@ -23,7 +23,11 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   bio: { type: String },
-  profilePic: { type: String, required: true },
+  profilePic: {
+    type: String,
+    required: true,
+    default: "default-profile-pic-url",
+  },
   location: { type: String },
   portfolioLink: { type: String },
   reputation: { type: Number, default: 0 },
