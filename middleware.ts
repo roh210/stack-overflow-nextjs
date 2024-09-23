@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
 const publicRoutes = createRouteMatcher([
   "/",
@@ -9,8 +10,6 @@ const publicRoutes = createRouteMatcher([
   "/profile/:id",
   "/community",
   "/jobs",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
 ]);
 
 // "/sign-in(.*)",

@@ -24,3 +24,5 @@ export const connectToDatabase = async () => {
     console.log("Error connecting to MongoDB", error);
   }
 };
+
+// TODO: change db name back to devoverflow
