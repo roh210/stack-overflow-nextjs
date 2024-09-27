@@ -6,7 +6,7 @@ export default function Page() {
       path="/sign-up"
       routing="path"
       signInUrl="/sign-in"
-      redirectUrl="http://localhost:3000/sign-up"
+      redirectUrl="/"
     />
   );
 }
