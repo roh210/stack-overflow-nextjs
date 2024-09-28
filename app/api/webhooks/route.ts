@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       email: email_addresses[0].email_address,
       picture: image_url,
     });
-    console.log("test user: " + mongoUser);
+    console.log("create user: " + mongoUser + evt.type);
     return NextResponse.json({ message: "Ok", user: mongoUser });
   }
 
@@ -87,6 +87,7 @@ export async function POST(req: Request) {
       },
       path: `/profile/${id}`,
     });
+    console.log("edit user: " + mongoUser + evt.type);
     return NextResponse.json({ message: "Ok", user: mongoUser });
   }
 
@@ -96,6 +97,7 @@ export async function POST(req: Request) {
     const deletedUser = await deleteUser({
       clerkId: id!,
     });
+    console.log(eventType + evt.type);
     return NextResponse.json({ message: "Ok", user: deletedUser });
   }
 
