@@ -1,13 +1,35 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import RenderTag from "../shared/RenderTag";
+// import RenderTag from "../shared/RenderTag";
 
-const UserCard = () => {
+// get user data from pages
+interface UserCardProps {
+  user: {
+    _id: string;
+    clerkId: string;
+    picture: string;
+    name: string;
+    username: string;
+  };
+}
+
+const UserCard = ({ user }: UserCardProps) => {
   return (
-    <div className="card-wrapper flex w-[260px] shrink-0 flex-col items-center justify-center gap-5 p-[30px]">
-      <div>user profile pic</div>
-      <div>user name</div>
-      <div>user email</div>
-      <div>popular question tag</div>
-    </div>
+    <>
+      <Link href={`/profile/:${user.clerkId}`}>
+        <Image
+          src={`/${user.picture}`}
+          alt={"user-pic"}
+          width={100}
+          height={100}
+          className="cursor-pointer rounded-full"
+        />
+        <h3 className="h3-bold text-dark200_light900 my-2.5">{user.name}</h3>
+        <p className="body-regular text-dark500_light500">@{user.username}</p>
+      </Link>
+    </>
   );
 };
 

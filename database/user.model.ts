@@ -7,7 +7,7 @@ export interface IUser extends Document {
   email: string;
   password?: string;
   bio?: string;
-  profilePic: string;
+  picture: string;
   location?: string;
   portfolioLink?: string;
   reputation?: number;
@@ -23,9 +23,10 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   bio: { type: String },
-  profilePic: {
+  picture: {
     type: String,
     required: true,
+    default: "https://example.com/default-profile-pic.png", // Set a valid default URL
   },
   location: { type: String },
   portfolioLink: { type: String },

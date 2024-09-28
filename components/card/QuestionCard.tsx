@@ -8,7 +8,7 @@ interface QuestionCardProps {
   _id: number;
   title: string;
   tags: { _id: string; name: string }[];
-  author: { _id: string; name: string; profilePic: string };
+  author: { _id: string; name: string; picture: string };
   upvotes: number;
   views: number;
   answers: Array<object>;
@@ -49,7 +49,7 @@ const QuestionCard = ({
 
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
         <Metric
-          imgUrl={`/${author.profilePic}`}
+          imgUrl={author?.picture || "/default-profile-pic.png"}
           alt="user"
           value={author.name}
           title={` • asked ${getTimeStamp(createdAt)} `}
