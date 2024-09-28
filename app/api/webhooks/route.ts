@@ -68,6 +68,7 @@ export async function POST(req: Request) {
       email: email_addresses[0].email_address,
       picture: image_url,
     });
+    console.log("test user: " + mongoUser);
     return NextResponse.json({ message: "Ok", user: mongoUser });
   }
 
