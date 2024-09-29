@@ -4,8 +4,6 @@ import Link from "next/link";
 import React from "react";
 import { Badge } from "../ui/badge";
 import RenderTag from "../shared/RenderTag";
-// import RenderTag from "../shared/RenderTag";
-// import RenderTag from "../shared/RenderTag";
 
 // get user data from pages
 interface UserCardProps {
