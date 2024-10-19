@@ -4,7 +4,6 @@ import ParseHTML from "@/components/shared/ParseHTML";
 import RenderTag from "@/components/shared/RenderTag";
 import { getQuestionById } from "@/lib/actions/question.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
-import { Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

@@ -13,7 +13,7 @@ const LeftSideBar = () => {
 
   return (
     <section className="background-light900_dark200 light-border custom-scrollbar sticky left-0 top-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
-      <div className="flex flex-1 flex-col gap-6 max-md:gap-3">
+      <div className="flex flex-1 flex-col gap-6">
         {sidebarLinks.map((item) => {
           const isActive =
             (pathname.includes(item.route) && item.route.length > 1) ||
@@ -27,9 +27,9 @@ const LeftSideBar = () => {
               <Image
                 src={item.imgURL}
                 alt={item.label}
-                width={24}
-                height={24}
-                className={`${!isActive && "invert-colors"} max-md:size-[22px]`}
+                width={20}
+                height={20}
+                className={`${!isActive && "invert-colors"}`}
               />
               <p
                 className={`${isActive ? "base-bold" : "base-medium"} max-lg:hidden`}
@@ -51,8 +51,8 @@ const LeftSideBar = () => {
               <Image
                 src="/assets/icons/account.svg"
                 alt="log in"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
                 className=" invert-colors lg:hidden"
               />
             </Button>
@@ -63,8 +63,8 @@ const LeftSideBar = () => {
               <Image
                 src="/assets/icons/sign-up.svg"
                 alt="log in"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
                 className="invert-colors lg:hidden"
               />
             </Button>

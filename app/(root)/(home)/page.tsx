@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default async function Page() {
   const result = await getQuestions({});
-
+  // TODO: FIX ISSUE WITH RESPONSIVE
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
