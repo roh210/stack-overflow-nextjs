@@ -2,7 +2,11 @@
 // Directive for Next.js indicating that this file contains server-side logic.
 
 import Answer from "@/database/answer.model"; // Import the Answer model from the database models. This allows for interacting with the 'Answer' collection.
-import { CreateAnswerParams, GetAnswersParams } from "./shared.types"; // Import a type definition 'CreateAnswerParams', which defines the structure for the function parameters.
+import {
+  AnswerVoteParams,
+  CreateAnswerParams,
+  GetAnswersParams,
+} from "./shared.types"; // Import a type definition 'CreateAnswerParams', which defines the structure for the function parameters.
 import { connectToDatabase } from "../mongoose"; // Import the function to connect to the MongoDB database using Mongoose.
 import { revalidatePath } from "next/cache"; // Import the revalidatePath function from Next.js, used to trigger a revalidation of the cache for a particular path.
 import Question from "@/database/question.model"; // Import the Question model from the database. This is used to interact with the 'Question' collection.
@@ -39,6 +43,64 @@ export async function getAllAnswers(params: GetAnswersParams) {
       .populate("author", "_id clerkId name picture")
       .sort({ createdAt: -1 });
     return { answers };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function upVoteAnswer(params: AnswerVoteParams) {
+  try {
+    connectToDatabase();
+    const { answerId, userId, hasupVoted, hasdownVoted, path } = params;
+    let updateQuery = {};
+
+    if (hasupVoted) {
+      updateQuery = { $pull: { upvotes: userId } };
+    } else if (hasdownVoted) {
+      updateQuery = {
+        $pull: { downvotes: userId },
+        $push: { upvotes: userId },
+      };
+    } else {
+      updateQuery = { $addToSet: { upvotes: userId } };
+    }
+
+    const answer = await Answer.findByIdAndUpdate(answerId, updateQuery, {
+      new: true,
+    });
+
+    if (!answer) throw new Error("Answer not found");
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function downVoteAnswer(params: AnswerVoteParams) {
+  try {
+    connectToDatabase();
+    const { answerId, userId, hasupVoted, hasdownVoted, path } = params;
+    let updateQuery = {};
+
+    if (hasdownVoted) {
+      updateQuery = { $pull: { downvotes: userId } };
+    } else if (hasupVoted) {
+      updateQuery = {
+        $pull: { upvotes: userId },
+        $push: { downvotes: userId },
+      };
+    } else {
+      updateQuery = { $addToSet: { downvotes: userId } };
+    }
+
+    const answer = await Answer.findByIdAndUpdate(answerId, updateQuery, {
+      new: true,
+    });
+
+    if (!answer) throw new Error("Answer not found");
+
+    revalidatePath(path);
   } catch (error) {
     console.log(error);
   }
