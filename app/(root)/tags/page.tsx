@@ -6,7 +6,7 @@ import { TagFilters } from "@/constants/filters";
 import { getAllTags } from "@/lib/actions/tag.action";
 import React from "react";
 
-const page = async () => {
+const Page = async () => {
   const result = await getAllTags({});
   console.log("tags: " + JSON.stringify(result));
   return (
@@ -41,4 +41,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Page;
